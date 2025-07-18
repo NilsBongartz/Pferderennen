@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Pferderennen</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Minimal Zusatz für Kompatibilität */
+    input, button, textarea { box-sizing: border-box; }
+    input, textarea { background: #fafafa; border: 1px solid #ccc; border-radius: 6px; }
+    input:focus, textarea:focus { border-color: #008cff; outline: none; }
+    .error { color: red; margin: 6px 0; }
+    #questionList button { margin-left: 8px; }
+  </style>
+</head>
+<body>
+  <h1>🎮 Adminbereich – Pferderennen</h1>
+
+  <div class="section">
+    <h2>📤 Frage erstellen</h2>
+    <input type="text" id="question" placeholder="Frage eingeben" autocomplete="off" />
+    <input type="text" id="a1" placeholder="Antwort A" autocomplete="off" />
+    <input type="text" id="a2" placeholder="Antwort B" autocomplete="off" />
+    <input type="text" id="a3" placeholder="Antwort C" autocomplete="off" />
+    <input type="text" id="a4" placeholder="Antwort D" autocomplete="off" />
+    <input type="text" id="correct" placeholder="Richtige Antwort (A–D)" maxlength="1" autocomplete="off" />
+    <button onclick="addQuestion()">➕ Frage speichern</button>
+    <span id="questionError" class="error"></span>
+  </div>
+
+  <div class="section">
+    <h2>📚 Gespeicherte Fragen</h2>
+    <ul id="questionList"></ul>
+  </div>
+
+  <div class="section">
+    <h2>📊 Einstellungen</h2>
+    <label for="requiredPercentage">Benötigter Prozentsatz richtiger Antworten (0.1–1):</label>
+    <input type="number" id="requiredPercentage" min="0.1" max="1" step="0.01" value="0.8">
+    <button onclick="sendQuestions()">✅ Fragen & Schwelle an Server senden</button>
+    <span id="settingsError" class="error"></span>
+  </div>
+
+  <div class="section">
+    <h2>🚦 Spielsteuerung</h2>
+    <div class="button-row">
+      <button onclick="startGame()" style="background-color:green;color:white">▶️ Spiel starten</button>
+      <button onclick="stopGame()" style="background-color:red;color:white">⏹ Spiel beenden</button>
+      <button onclick="returnToLobby()" style="background-color:blue;color:white">↩️ Zurück zur Lobby</button>
+      <button onclick="resetAll()" style="background-color:orange;">🗑 Alles zurücksetzen</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🐎 Team-Fortschritt</h2>
+    <p id="progressRot">Team Rot 🟥: 0 von ?</p>
+    <div class="race-track" id="raceRot"></div>
+    <p id="progressGelb">Team Gelb 🟨: 0 von ?</p>
+    <div class="race-track" id="raceGelb"></div>
+  </div>
+
+  <div class="section">
+    <h2>👥 Teilnehmerübersicht</h2>
+    <div class="team-section">
+      <div class="team-box">
+        <h3>Team Rot 🟥</h3>
+        <table>
+          <thead><tr><th>Benutzername</th><th>Aktion</th></tr></thead>
+          <tbody id="rotTable"></tbody>
+        </table>
+      </div>
+      <div class="team-box">
+        <h3>Team Gelb 🟨</h3>
+        <table>
+          <thead><tr><th>Benutzername</th><th>Aktion</th></tr></thead>
+          <tbody id="gelbTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

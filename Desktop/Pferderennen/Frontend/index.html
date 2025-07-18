@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pferderennen – Teilnehmer</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #f6f7fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 430px;
+      margin: 36px auto;
+      padding: 22px 18px 40px 18px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 3px 20px #d0d7e3;
+      min-height: 420px;
+    }
+    .box, .question-box {
+      padding: 20px 0;
+    }
+    h1 { font-size: 2em; color: #444; margin-bottom: 0.5em; }
+    h2 { margin: 0 0 16px 0; color: #1563b8; }
+    input[type="text"] {
+      width: 92%;
+      padding: 12px 10px;
+      font-size: 1.14em;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      transition: border 0.2s;
+    }
+    input[type="text"]:focus {
+      border-color: #4094e8;
+      outline: none;
+    }
+    button {
+      padding: 11px 20px;
+      margin: 5px 0;
+      font-size: 1.13em;
+      background: #4094e8;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      width: 100%;
+      max-width: 380px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 1px 4px #dbefff;
+    }
+    button:hover, .answer-btn:hover {
+      background: #1563b8;
+      transform: translateY(-2px) scale(1.02);
+    }
+    .race-track {
+      display: flex;
+      justify-content: center;
+      margin: 18px 0 14px 0;
+      gap: 4px;
+    }
+    .track-tile {
+      width: 28px;
+      height: 28px;
+      background: #e6e9ef;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+      border: 1px solid #ccd8e0;
+      box-shadow: 0 1px 3px #eef3f6;
+    }
+    .track-tile.active {
+      background: #ffdc67;
+      font-weight: bold;
+      border: 1.5px solid #f1be15;
+      box-shadow: 0 0 10px #ffe082;
+    }
+    #timer {
+      margin: 9px 0 17px 0;
+      font-size: 1.18em;
+      color: #1563b8;
+      font-weight: 600;
+    }
+    #feedback {
+      margin-top: 15px;
+      font-size: 1.13em;
+      color: #178800;
+      min-height: 28px;
+    }
+    .result-box {
+      padding: 35px 8px;
+      border-radius: 11px;
+      background: #eef7fa;
+      box-shadow: 0 2px 8px #c4d0e7;
+      margin-top: 35px;
+    }
+    @media (max-width: 600px) {
+      .container { max-width: 99vw; min-height: 320px; }
+      h1 { font-size: 1.6em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Loginbereich -->
+    <div class="box" id="loginArea">
+      <h1>🐎 Pferderennen</h1>
+      <p>Gib deinen Benutzernamen ein, um mitzumachen:</p>
+      <input type="text" id="username" placeholder="Benutzername" autocomplete="off">
+      <button onclick="joinGame()">Mitspielen</button>
+    </div>
+    <!-- Dynamischer Inhalt -->
+    <div id="mainContent"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
